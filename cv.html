@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!-- -----------------------------------------------------------------/
+  // Original Code Structure: Preethi Leelavathy                      /
+  // Project: My Personal Website                                     /
+  // Description: this is the cv page of my website                   /
+  // Date: August-8-2024                                              /
+  //------------------------------------------------------------------/
+ -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+    <title>CV - Preethi's Personal Webpage</title>
+    <link rel="stylesheet" href="cv.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        fetch("header.html")
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("header-placeholder").innerHTML = data;
+            adjustLayout();
+            // Initialize the header scripts after the header is loaded
+            initializeHeaderScripts();  // This function is in your main JS file
+        })
+        .catch(error => console.log('Error loading header:', error));
+
+});
+function initializeHeaderScripts() {
+  const modal = document.getElementById("contactForm");
+ const btn = document.querySelector(".fa-envelope");
+ const span = document.querySelector(".close-btn");
+ const form = document.getElementById("contact-form");
+ const thankYouMessage = document.getElementById("thank-you-message");
+
+ if (btn) {
+     btn.onclick = function (event) {
+         event.preventDefault();
+         modal.style.display = "block";
+         console.log("Email button clicked - modal opened.");
+     };
+ } else {
+     console.error("Email button not found.");
+ }
+
+ if (span) {
+     span.onclick = function () {
+         modal.style.display = "none";
+         console.log("Close button clicked - modal closed.");
+     };
+ } else {
+     console.error("Close button not found.");
+ }
+
+ window.onclick = function (event) {
+     if (event.target == modal) {
+         modal.style.display = "none";
+         console.log("Click outside modal detected - modal closed.");
+     }
+ };
+
+ // Form submission with reCAPTCHA
+ if (form) {
+     form.addEventListener("submit", function (event) {
+         event.preventDefault(); // Prevent page refresh
+
+         const submitButton = form.querySelector('button.g-recaptcha');
+         if (submitButton) {
+             submitButton.classList.add('loading'); // Apply loading state
+             submitButton.disabled = true; // Disable the button
+         }
+
+         console.log("Form submission initiated...");
+
+         const formData = new FormData(form);
+         for (let [key, value] of formData.entries()) {
+             console.log(`FormData: ${key} = ${value}`);
+         }
+
+         fetch(form.action, {
+             method: "POST",
+             body: formData,
+         })
+             .then(response => {
+                 console.log("Response received from the server.");
+                 if (response.ok) {
+                     console.log("Form submission successful, displaying thank-you message.");
+                     return response.text(); // Get response text
+                 } else {
+                     console.error("Form submission failed with status:", response.status);
+                     throw new Error("Form submission failed with status: " + response.status);
+                 }
+             })
+             .then(text => {
+                 console.log("Server response text:", text);
+                 form.style.display = "none";
+                 thankYouMessage.style.display = "block";
+
+                 setTimeout(function () {
+                     modal.style.display = "none";
+                     form.reset();
+                     form.style.display = "block";
+                     thankYouMessage.style.display = "none";
+
+                     if (submitButton) {
+                         submitButton.classList.remove('loading'); // Remove loading state
+                         submitButton.disabled = false; // Enable the button
+                     }
+
+                     console.log("Modal closed after 3 seconds.");
+                 }, 5000); // 5 seconds
+             })
+             .catch(error => {
+                 console.error("Error during form submission:", error);
+                 if (submitButton) {
+                     submitButton.classList.remove('loading'); // Remove loading state
+                     submitButton.disabled = false; // Enable the button
+                 }
+             });
+     });
+ } else {
+     console.error("Contact form not found.");
+ }
+
+// Side menu logic
+const menuButton = document.querySelector(".menu-button");
+const sideMenu = document.querySelector(".side-menu");
+const closeBtn = document.querySelector(".side-menu .close-btnn");
+
+if (menuButton && sideMenu) {
+  menuButton.addEventListener("click", function() {
+    console.log("Menu button clicked.");
+    sideMenu.classList.toggle("open");
+  });
+} else {
+  console.error("Menu button or side menu not found.");
+}
+
+if (closeBtn) {
+  closeBtn.addEventListener("click", function() {
+    console.log("Close button for side menu clicked.");
+    sideMenu.classList.remove("open");
+  });
+} else {
+  console.error("Close button for side menu not found.");
+}
+
+// Close the side menu when the user clicks outside of it
+window.addEventListener("click", function(event) {
+  if (sideMenu.classList.contains("open") && !sideMenu.contains(event.target) && !menuButton.contains(event.target)) {
+    console.log("Click detected outside side Menu. Closing side menu.");
+    sideMenu.classList.remove("open");
+  }
+});
+
+}
+      function scaleContent() {
+        const header = document.querySelector('#header-placeholder'); // Reference to the header
+        const bodyContent = document.querySelector('.body-content'); // Reference to the body content wrapper
+        const html = document.documentElement;
+
+        // Get the dimensions of the viewport
+        const width = window.innerWidth;
+
+        // Calculate the scale factor for the width
+        const scaleX = width / html.scrollWidth;
+
+        // Apply the scale transformation based on width
+        header.style.transform = `scale(${scaleX})`;
+        header.style.transformOrigin = 'top left';
+        bodyContent.style.transform = `scale(${scaleX})`;
+        bodyContent.style.transformOrigin = 'top left';
+
+        // Adjust the widths to fit within the viewport
+        header.style.width = `${width / scaleX}px`;
+        bodyContent.style.width = `${width / scaleX}px`;
+        bodyContent.style.height = 'auto'; // Let the height adjust automatically
+      }
+
+      function resetScale() {
+        const header = document.querySelector('#header-placeholder'); // Reference to the header
+        const bodyContent = document.querySelector('.body-content'); // Reference to the body content wrapper
+        header.style.transform = 'none';
+        header.style.width = '100%'; // Reset width to 100%
+        bodyContent.style.transform = 'none';
+        bodyContent.style.width = '100%'; // Reset width to 100%
+        bodyContent.style.height = 'auto'; // Reset height to auto
+      }
+
+      function adjustLayout() {
+        resetScale();
+        requestAnimationFrame(scaleContent);
+      }
+
+      // Initial scale on page load
+      window.addEventListener('resize', adjustLayout);
+    </script>
+  </head>
+
+  <body>
+    <div id="header-placeholder" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;"></div>
+
+    <div class="body-content" style="padding-top: 100px;"> <!-- Ensure the body content is padded to avoid overlap with the fixed header -->
+
+
+      <div class="cvbar">
+        <img src="cvbar.png"  width="1375" alt="CV header Image" title="Please check credit section on the side menu for image source">
+        <span class="overlaytext_1" align="center">My Curriculum vitae</span>
+      </div>
+
+      <div class="flex-container">
+        <div class="one-column">
+          <h2>Personal Profile</h2>
+          <p>I am a postgraduate in AI actively seeking a graduate-level opportunity in
+          software development. With a robust foundation in JavaScript, HTML, CSS,
+          and Python, I excel in creative and analytical problem-solving. My
+          experience includes developing a smart music recommendation system
+          using the agile method and implementing various machine-learning solutions
+          during my Masters. My background in customer service has honed my skills
+          in reliability and teamwork, allowing me to thrive under pressure. As a quick
+          learner with an insatiable enthusiasm for new knowledge, I am committed to
+          continuous learning. I am passionate about crafting innovative solutions and
+          eagerly anticipate the opportunity to contribute significantly to the industry
+          through your team, collaborating with brilliant minds.</p>
+        </div>
+        <div class="two-columns">
+          <div class="column">
+          <h2>Education</h2>
+
+         <h3>Masters in Intelligent Systems   |   Distinction  </h3>
+         <h4>De Montfort University, United Kingdom  |   Sept 2021 – Sept 2022</h4>
+         <p>Relevant Coursework:
+         <ul><li>Artificial Neural Networks (ANN) and deep learning to detect and classify
+         cyber-attacks</li>
+         <li>Mobile robots programming to perform obstacle avoidance, environment
+         mapping and task execution</li>
+         <li>Natural Language Processing (NLP) with deep learning for Chatbots</li>
+         <li>Built a  fuzzy Interference System</li>
+         <li>Computational Intelligence / Machine Learning implementation and
+         comparison of different algorithms</li>
+         <li>Data Mining to identify factors contributing to cardiovascular diseases</li></ul></p>
+
+         <p>Final Project:<br><br>Developed a smart music recommendation system using
+         cloud-client (server) architecture. Design and implementation using HTML,
+         CSS, JavaScript and Google Cloud FireStore Database.
+         <a href="https://github.com/Preethiplease/MSc-Dissertation.git">GitHub link</a></p>
+
+         <h3>Bachelors in Commerce - Computer Applications  |   Distinction</h3>
+         <h4>Zenex Vision Degree College, India  |   July 2016 – Aug 2019</h4>
+         <p>Relevant subjects:<br>Accounting, Economics, Python, JavaScript, OOP</p>
+
+         <h2>Aditional Courses</h2>
+      <p><ul><li>SQL Essential training @ LinkedIn Learning | Ongoing</li>
+          <li>Software Development Skills Bootcamp @ Althaus Digital <br> Aug 2023 – Oct 2023</li>
+          <li>HTML5, CSS3 & VANILLA JS advanced course @ Udemy website <br> Jun 2023 – Jul 2023</li>
+          <li>PYTHON Programming Masterclass @ Udemy website <br> Jan 2023 – Mar 2023</li></ul></p>
+
+          </div>
+          <div class="column">
+                  <h2>Technical Skills</h2>
+                  <p><ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>SQLite</li>
+                    <li>Python</li>
+                      <li>C#</li>
+                    <li>Node.js</li>
+                    <li>Google FireStore</li>
+
+
+                  </ul></p>
+                  <h2>Key Assests</h2>
+                  <p><ul>
+                    <li>Highly flexible and adaptable</li>
+                    <li>Innovative and initiative</li>
+                    <li>Attention to details</li>
+                    <li>Efficient and reliable</li>
+                    <li>Self motivated</li>
+                    <li>Time management skills</li>
+                    <li>Good Communicative skills</li>
+                    <li>Problem Solving and mapping skills</li>
+
+                  </ul></p>
+
+           <h2>Work Experience</h2>
+           <h3>Part-time Shift-Leader @ OneStop - Tesco Stores | Leicester <br> Sept 2022 – Present</h3>
+           <p>- Provide customer service assistance on the shop floor. <br>
+              - Manage the shift and closing of the store.<br>
+              - handle billing and stocking products.</p>
+           <h3>Part-time Sales Advisor @ H&M stores | Hyderabad <br>Dec 2018 – Dec 2019</h3>
+           <p> - Provide customer service assistance and fashion advices. <br>
+               - Manage the stock levels and assisting customer with their purchase.<br>
+                 - handle billing and floor operations.</p>
+             </div>
+           </div>
+      </div>
+
+      <marquee direction="right" behavior="scroll">
+        <img id="skating-cat" title="GIF via Pinterest, please check credit section on the side menu for source" src="skatingcat.png" alt="Skating cat GIF via Pinterest">
+      </marquee>
+
+      <footer>
+        <p><b>&copy; 2024 Preethi Leelavathy. All rights reserved.</b><br><br>
+        Please review the Credits section in the side menu to verify the sources for images and GIFs<br>
+        This page will be continuously updated and expanded. Thank you for visiting my corner of the web, feel free to get in touch or to say hello!<br></p>
+      </footer>
+      
+    </div>
+
+  </body>
+</html>

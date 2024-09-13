@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<!-- ----------------------------------------------------------------/
+  // Original Code Structure: Preethi Leelavathy                     /
+  // Project: My Personal Website                                    /
+  // Description: this is the aboutme page of my website             /
+  // Date: August-5-2024                                             /
+  //-----------------------------------------------------------------/
+ -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+    <title>About - Preethi's Personal Webpage</title>
+    <link rel="stylesheet" href="aboutme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        fetch("header.html")
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("header-placeholder").innerHTML = data;
+            adjustLayout();
+            // Initialize the header scripts after the header is loaded
+            initializeHeaderScripts();  // This function is in your main JS file
+        })
+        .catch(error => console.log('Error loading header:', error));
+
+});
+function initializeHeaderScripts() {
+  const modal = document.getElementById("contactForm");
+ const btn = document.querySelector(".fa-envelope");
+ const span = document.querySelector(".close-btn");
+ const form = document.getElementById("contact-form");
+ const thankYouMessage = document.getElementById("thank-you-message");
+
+ if (btn) {
+     btn.onclick = function (event) {
+         event.preventDefault();
+         modal.style.display = "block";
+         console.log("Email button clicked - modal opened.");
+     };
+ } else {
+     console.error("Email button not found.");
+ }
+
+ if (span) {
+     span.onclick = function () {
+         modal.style.display = "none";
+         console.log("Close button clicked - modal closed.");
+     };
+ } else {
+     console.error("Close button not found.");
+ }
+
+ window.onclick = function (event) {
+     if (event.target == modal) {
+         modal.style.display = "none";
+         console.log("Click outside modal detected - modal closed.");
+     }
+ };
+
+ // Form submission with reCAPTCHA
+ if (form) {
+     form.addEventListener("submit", function (event) {
+         event.preventDefault(); // Prevent page refresh
+
+         const submitButton = form.querySelector('button.g-recaptcha');
+         if (submitButton) {
+             submitButton.classList.add('loading'); // Apply loading state
+             submitButton.disabled = true; // Disable the button
+         }
+
+         console.log("Form submission initiated...");
+
+         const formData = new FormData(form);
+         for (let [key, value] of formData.entries()) {
+             console.log(`FormData: ${key} = ${value}`);
+         }
+
+         fetch(form.action, {
+             method: "POST",
+             body: formData,
+         })
+             .then(response => {
+                 console.log("Response received from the server.");
+                 if (response.ok) {
+                     console.log("Form submission successful, displaying thank-you message.");
+                     return response.text(); // Get response text
+                 } else {
+                     console.error("Form submission failed with status:", response.status);
+                     throw new Error("Form submission failed with status: " + response.status);
+                 }
+             })
+             .then(text => {
+                 console.log("Server response text:", text);
+                 form.style.display = "none";
+                 thankYouMessage.style.display = "block";
+
+                 setTimeout(function () {
+                     modal.style.display = "none";
+                     form.reset();
+                     form.style.display = "block";
+                     thankYouMessage.style.display = "none";
+
+                     if (submitButton) {
+                         submitButton.classList.remove('loading'); // Remove loading state
+                         submitButton.disabled = false; // Enable the button
+                     }
+
+                     console.log("Modal closed after 3 seconds.");
+                 }, 5000); // 5 seconds
+             })
+             .catch(error => {
+                 console.error("Error during form submission:", error);
+                 if (submitButton) {
+                     submitButton.classList.remove('loading'); // Remove loading state
+                     submitButton.disabled = false; // Enable the button
+                 }
+             });
+     });
+ } else {
+     console.error("Contact form not found.");
+ }
+
+// Side menu logic
+const menuButton = document.querySelector(".menu-button");
+const sideMenu = document.querySelector(".side-menu");
+const closeBtn = document.querySelector(".side-menu .close-btnn");
+
+if (menuButton && sideMenu) {
+  menuButton.addEventListener("click", function() {
+    console.log("Menu button clicked.");
+    sideMenu.classList.toggle("open");
+  });
+} else {
+  console.error("Menu button or side menu not found.");
+}
+
+if (closeBtn) {
+  closeBtn.addEventListener("click", function() {
+    console.log("Close button for side menu clicked.");
+    sideMenu.classList.remove("open");
+  });
+} else {
+  console.error("Close button for side menu not found.");
+}
+
+// Close the side menu when the user clicks outside of it
+window.addEventListener("click", function(event) {
+  if (sideMenu.classList.contains("open") && !sideMenu.contains(event.target) && !menuButton.contains(event.target)) {
+    console.log("Click detected outside side Menu. Closing side menu.");
+    sideMenu.classList.remove("open");
+  }
+});
+
+}
+
+      function scaleContent() {
+        const header = document.querySelector('#header-placeholder'); // Reference to the header
+        const bodyContent = document.querySelector('.body-content'); // Reference to the body content wrapper
+        const html = document.documentElement;
+
+        // Get the dimensions of the viewport
+        const width = window.innerWidth;
+
+        // Calculate the scale factor for the width
+        const scaleX = width / html.scrollWidth;
+
+        // Apply the scale transformation based on width
+        header.style.transform = `scale(${scaleX})`;
+        header.style.transformOrigin = 'top left';
+        bodyContent.style.transform = `scale(${scaleX})`;
+        bodyContent.style.transformOrigin = 'top left';
+
+        // Adjust the widths to fit within the viewport
+        header.style.width = `${width / scaleX}px`;
+        bodyContent.style.width = `${width / scaleX}px`;
+        bodyContent.style.height = 'auto'; // Let the height adjust automatically
+      }
+
+      function resetScale() {
+        const header = document.querySelector('#header-placeholder'); // Reference to the header
+        const bodyContent = document.querySelector('.body-content'); // Reference to the body content wrapper
+        header.style.transform = 'none';
+        header.style.width = '100%'; // Reset width to 100%
+        bodyContent.style.transform = 'none';
+        bodyContent.style.width = '100%'; // Reset width to 100%
+        bodyContent.style.height = 'auto'; // Reset height to auto
+      }
+
+      function adjustLayout() {
+        resetScale();
+        requestAnimationFrame(scaleContent);
+      }
+
+      // Initial scale on page load
+      window.addEventListener('resize', adjustLayout);
+    </script>
+  </head>
+
+  <body>
+    <div id="header-placeholder" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;"></div>
+
+
+    <div class="body-content" style="padding-top: 100px;"> <!-- Ensure the body content is padded to avoid overlap with the fixed header -->
+
+      <div class="mypicturebar">
+        <img src="mypicturebar.png"  width="1375" alt="My Short Intro">
+        <span class="overlaytext_1" align="center">Hey There! I am flattered you wanna know more.</span>
+        <span class="overlaytext_2" align="center"> I am Preethi Leelavathy<br>Intelligent Systems (AI) Postgraduate<br>Self-Taught Singer, Songwriter and Guitarist</span>
+        <span class="overlaytext_3" align="center">I am from Nellore, a small town in Andhra Pradesh, India <br> Currently, I reside in Leicester, UK</span>
+      </div>
+
+      <div class="flex-container">
+        <div class="two-columns">
+          <div class="column">
+            <h2>Basic Information</h2>
+            <p>I prefer the pronouns she/her. I am fluent in English, Telugu (native), and Tamil.<br><br>Born in Nellore, a place renowned for its spicy food and hot weather,
+               I spent my formative years in Hyderabad and Chennai, where I completed my education until bachelors.
+               Later, I moved to Leicester to pursue my master's degree. These diverse locations have shaped my appreciation for different ways of living and become easily adaptable.
+               Along the way, I have made an amazing group of friends who have taught me so much about their food and culture.<br><br>
+
+               I have a knack for learning quickly and deeply. Being flexible, adaptable, innovative, and proactive has significantly contributed to my personal and professional growth.<br><br>
+               <b>My AI Journey:</b> I was always a kid who excelled in academics, particularly in math and computer science. After completing my bachelor's in B.Com Computer Applications,
+                  it became clear that I was captivated by computer languages and the advancements in AI. This fascination led me to pursue a master's in AI, where I graduated with distinction.<br><br>
+               <b>My Music Journey:</b> At 15, I discovered my love for singing and began practicing in my room. When I was 20, during the COVID quarantine,
+                  I had the opportunity to self-teach guitar and experiment with writing my own songs. To my surprise, this endeavor went exceptionally well, revealing a hidden talent within me.<br><br>
+               <b>My Personal Journey:</b> I have always been spiritual, believing in the magical ways the universe operates. I strive to be a better person every day,
+                  maintaining a good relationship with all my previous versions by sending them love and healing. This continuous self-improvement and spirituality play a crucial role in my life.
+            </p>
+               <!-- <h2>A little about all</h2> -->
+               <p> </p>
+          </div>
+          <div class="column">
+            <h2>Personal Interests and Hobbies</h2>
+            <p><b>Pink and Cats!</b> If you know this about me, you KNOW me.<br><br> I love to engage in activities that refresh and nourish my mind, body, and soul with positivity.<br><br>
+              <b>Mind:</b> I enjoy reading self-help books, practicing mindfulness in my everyday tasks, maintain routines and expanding my knowledge in AI and music.
+              <b>Body:</b> I work out at least four days a week, cook healthy meals, and stay well-hydrated. (Here's your reminder to drink water now!)
+              <b>Soul:</b> I meditate and practice gratitude. I also incorporate grounding practices into my daily schedule.</p>
+              <h2>Personal Philosophy</h2>
+              <p>I believe that everyone is on their own unique journey, following their own timeline. Comparing oneself to others is futile; the only fair comparison is with your past self.
+                Self-love and forgiveness are crucial. To me, mindset is paramount. What you think shapes your reality.</p>
+              <h2>Future Goals</h2>
+              <p>My aspirations for the future are diverse and ambitious. Firstly, I aim to become a professional AI engineer, leveraging my passion for technology and innovation. Simultaneously, I aspire to be a musician with my music available on active platforms, sharing my creative expression with the world.<br><br>
+                 I dream of delivering a TED Talk, sharing my personal growth journey. I want to give back to the community in meaningful ways.
+                 One of my long-term goals is to own a farm where I can grow organic vegetables and fruits.  I envision building a school that focuses on identifying and nurturing each child's unique talents, helping them excel in their strengths rather than forcing them to study subjects they may not need.
+               </p>
+
+             </div>
+           </div>
+         </div>
+         <div class="cat">
+           <img src="watchingcat.png" title="Image via Pinterest, please check credit section on the side menu for source" alt="Lazy cat Image via Pinterest">
+         </div>
+
+         <footer>
+           <p><b>&copy; 2024 Preethi Leelavathy. All rights reserved.</b><br><br>
+           Please review the Credits section in the side menu to verify the sources for images and GIFs<br>
+           This page will be continuously updated and expanded. Thank you for visiting my corner of the web, feel free to get in touch or to say hello!<br></p>
+         </footer>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- ----------------------------------------------------------------/
+  // Original Code Structure: Preethi Leelavathy                     /
+  // Project: My Personal Website                                    /
+  // Description: This is the mainpage of my website                 /
+  // Date: August-3-2024                                             /
+  //-----------------------------------------------------------------/
+ -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+    <title>Homepage - Preethi's Personal Webpage</title>
+    <link rel="stylesheet" href="MyWebsite.css">
+    <script type="text/javascript" Language="javascript" src="MyWebsite.js"> </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+  </head>
+  <body>
+    <div id="header-placeholder" style="position: fixed; top: 0; left: 0; width: 1375px; z-index: 1000;"></div>
+
+    <div class="body-content" style="padding-top: 100px;"> <!-- Ensure the body content is padded to avoid overlap with the fixed header -->
+
+
+      <div class="homepagetiles">
+        <div class="tile-container">
+          <a class="tile1_aboutme" href="aboutme.html" title="Image via Pinterest, please check credit section on the side menu for source">
+              <img src="aboutme.png" alt="'about me' floral tile, via Pinterest" width="300" height="602.5">
+              <span class="overlaytext_1" align="center">Hello. <br>Welcome to my page! <br> <br>Click here to know <br>a bit more about me </span>
+          </a>
+        </div>
+        <div class="tile-container">
+          <a class="tile2_cv" href="cv.html">
+              <img src="cv.png" alt="cv" width="300" height="299">
+              <span class="overlaytext_2" align="center">My work experience,<br>education and more <br> <br>Check them out here</span>
+          </a>
+        </div>
+        <div class="tile-container">
+          <a class="tile3_portfolio" href="portfolio.html">
+              <img src="portfolio.png" alt="portfolio" width="300" height="297">
+              <span class="overlaytext_3" align="center">Some exciting projects <br>I've worked on <br> <br>Check them out here</span>
+          </a>
+        </div>
+        <div class="tile-container">
+          <a class="tile4_mymusic" href="music.html">
+              <img src="mymusic.png" alt="mymusic" width="300" height="298.5">
+              <span class="overlaytext_4" align="center">*Drum roll pleaseee*<br> <br>Check out my originals and more here</span>
+          </a>
+        </div>
+        <div class="tile-container">
+          <a class="tile5_mypersonalgrowth" href="personalgrowth.html">
+              <img src="mypersonalgrowth.png" alt="mypersonalgrowth" width="300" height="297">
+              <span class="overlaytext_5" align="center">My spiritual journey,<br>personal goals and etc</span>
+          </a>
+        </div>
+      </div>
+      <!-- end of homepagetiles -->
+
+
+      <!-- Second Header Line -->
+      <div class="secondheader-container" id="secondheader">
+        <!-- the cat gif is outside the content, so it will stay behind the line unlike the text -->
+        <img id="sleeping-cat" title="GIF via Pinterest, please check credit section on the side menu for source" src="sleepingcat.gif" alt="Stars Cat GIF via Pinterest">
+        <div class="secondheader-content">
+          <div class="secondheader-text" title="Nibbles Game">Play Nibbles</div>
+        </div>
+      </div>
+
+      <!-- snake game section -->
+      <div class="nibbles-note">
+        <h3>Nibbles - The Classic Snake Game</h3><p>Instructions: Use the arrow keys to guide the green snake toward the red apple.<br>Each time the snake eats an apple, it grows longer. The snake can only turn to an adjacent side.<br>Avoid crashing into the walls or you'll lose the game.</p>
+      </div>
+      <div class="game-container">
+          <canvas id="gameCanvas"></canvas>
+          <div class="controls">
+              <p id="score">Score: 0</p>
+              <button id="resetButton">Restart</button>
+          </div>
+      </div>
+
+      <!-- third Header Line -->
+      <div class="thirdheader-container" id="thirdheader">
+        <!-- the cat gif is outside the content, so it will stay behind the line unlike the text -->
+        <div class="thirdheader-content">
+          <div class="thirdheader-text" title="some games"> Sandbox</div>
+        </div>
+      </div>
+
+      <!-- sandbox -->
+      <div class="sandbox-note">
+        <h3>The Untouchable Stars</h3>
+      </div>
+      <div class="sandbox-container" align="center">
+          <canvas id="sandboxCanvas" width="1200" height="600" ></canvas>
+      </div>
+
+      <div class="cat">
+        <img id="star-cat" title="GIF via Pinterest, please check credit section on the side menu for source" src="starcat.gif" alt="Stars Cat GIF via Pinterest">
+      </div>
+
+      <footer>
+        <p><b>&copy; 2024 Preethi Leelavathy. All rights reserved.</b><br><br>
+        Please review the Credits section in the side menu to verify the sources for images and GIFs<br>
+        This page will be continuously updated and expanded. Thank you for visiting my corner of the web, feel free to get in touch or to say hello!<br></p>
+      </footer>
+
+    </div>
+  </body>
+</html>

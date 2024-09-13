@@ -1,0 +1,122 @@
+/* Resetting default margin and padding for the body */
+body {
+  transform-origin: top left;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.body-content {
+  width: 100%;
+  min-width: 1375px;
+  height: auto;
+  flex: 1;
+  padding-top: 100px; /* Adjust padding to match header height */
+}
+
+.cvbar img {
+  width: 100%; /* Take up 100% of the container width*/
+  min-width: 1375px; /* Minimum width of 1375px */
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.overlaytext_1 {
+  position: absolute;
+  left: 14%;
+  top: 57%; /* Adjust as needed */
+  font-size: 30px;
+  font-weight: bold;
+  transform: translateX(-50%);
+  color: #303030;
+  background-color: transparent; /* Semi-transparent background for better readability */
+  text-align: Justify;
+  box-sizing: border-box;
+  z-index: 200;
+}
+
+.flex-container {
+      display: flex;
+      justify-content: center;
+      text-align: justify;
+    }
+
+.one-column {
+  position: absolute;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  margin-top: 40px;
+  border: 0.5px solid black; /* Example border */
+  box-sizing: border-box;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3); /* Optional: add a shadow for a more pronounced effect */
+}
+
+.two-columns {
+  display: flex;
+  margin-top: 320px;
+  position: absolute;
+  justify-content: space-between;
+  width: 100%;
+  height:auto;
+  max-width: 1200px; /* Adjust max-width as needed */
+}
+
+.column {
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3); /* Optional: add a shadow for a more pronounced effect */
+  width: 48%; /* Adjust width as needed */
+  padding: 10px 30px 10px 30px;
+  border: 0.5px solid black; /* Example border */
+  box-sizing: border-box;
+}
+
+.flex-container ul {
+  list-style-type: disc; /* Default bullet style */
+  padding-left: 20px; /* Add some padding to align the list */
+}
+
+.flex-container li {
+  font-size: 18px;
+  margin-bottom: 10px; /* Add some space between list items */
+}
+
+  .flex-container p {
+      font-size: 18px;
+      text-align: justify;
+      margin-bottom: 0;
+    }
+
+.flex-container a {
+  text-decoration: underline;
+  color: black;
+}
+
+
+marquee {
+ position: fixed;
+ width:100%;
+ margin-top: 1405px; /* Adjust the margin as needed */
+}
+
+marquee img {
+ width: 100px;
+ height: auto;
+ border: none;
+}
+
+/* Footer styling */
+footer {
+  border-top: 2px solid black; /* Example border */
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  background-color: #F3CFC6;
+  margin-top: 1500px; /* Push footer to the bottom */
+}

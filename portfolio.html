@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!-- -----------------------------------------------------------------/
+  // Original Code Structure: Preethi Leelavathy                      /
+  // Project: My Personal Website                                     /
+  // Description: this is the portfolio page of my website            /
+  // Date: August-10-2024                                             /
+  //------------------------------------------------------------------/
+ -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+    <title>Portfolio - Preethi's Personal Webpage</title>
+    <link rel="stylesheet" href="porfolio.css">
+    <script type="text/javascript" Language="javascript" src="portfolio.js"> </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+  </head>
+
+  <body>
+    <div id="header-placeholder" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;"></div>
+
+    <div class="body-content" style="padding-top: 100px;"> <!-- Ensure the body content is padded to avoid overlap with the fixed header -->
+      <div class="Note" align="center">
+        <h3>Note</h3>
+        <p>Some project’s GitHub repository link will be added to the slides shortly.</p>
+      </div><!-- dani project -->
+<!-- Slideshow container -->
+    <div class="slideshow-container">
+
+          <div class="mySlides">
+            <p>My Portfolio<br><br>Project 1 - Personal Webpage</p>
+
+              <div class="leftcontent_images">
+                <div class="project_imageslideshow" data-slider-id="1">
+                    <div class="myImgSlides fade"  data-slider-id="1">
+                      <img src="p1img1.png">
+                      <div class="text">The HomePage</div>
+                    </div>
+                    <div class="myImgSlides fade"  data-slider-id="1">
+                      <img src="p1img2.png">
+                      <div class="text">Tiles with short info</div>
+                    </div>
+                    <div class="myImgSlides fade"  data-slider-id="1">
+                      <img src="p1img3.png" >
+                      <div class="text">Porfolio Page WIP</div>
+                    </div>
+
+                    <a class="Imgprev"  data-slider-id="1" onclick="ImgplusSlides(-1, 1)">&#10094;</a>
+                    <a class="Imgnext"  data-slider-id="1" onclick="ImgplusSlides(1, 1)">&#10095;</a>
+                </div>
+                  <!-- The dots/circles -->
+                  <div style="text-align:center" class="Imgdot-container" data-slider-id="1">
+                    <span class="Imgdot" onclick="ImgcurrentSlide(1, 1)"></span>
+                    <span class="Imgdot" onclick="ImgcurrentSlide(2, 1)"></span>
+                    <span class="Imgdot" onclick="ImgcurrentSlide(3, 1)"></span>
+                  </div>
+              </div>
+
+              <div class="rightcontent_text">A personal project in process<br><br>
+                This project was developed in Atom IDE using HTML, CSS and JavaScript.<br><br>
+                This website was developed to provide a basic introduction of myself while showcasing my coding skills in HTML, JavaScript, and CSS.<br><br>
+                I created it as an opportunity to apply my knowledge and experiment with web development by incorporating various elements into the page.<br><br>
+                The homepage features five tiles, each directing you to a different page with relevant information within the same tab.
+                Additionally, clicking on my name in the header will always bring you back to the homepage from any page.<br><br>
+                More Info will be updated when all the tiles have been developed completely.<br><br>
+                <button id="GithubButton"><a href="https://github.com/Preethiplease/My-Personal-Website">GitHub 🔗</a></button>
+            </div>
+          </div>
+
+        <div class="mySlides">
+          <p>My Portfolio<br><br>Project 2 - Smart Music Recommendation System</p>
+
+          <div class="leftcontent_images">
+            <div class="project_imageslideshow" data-slider-id="2">
+                <div class="myImgSlides fade"  data-slider-id="2">
+                  <img src="p2img1.png">
+                  <div class="text">Home page for user preference input</div>
+                </div>
+                <div class="myImgSlides fade"  data-slider-id="2">
+                  <img src="p2img2.png">
+                  <div class="text">Cloud Firestore Database</div>
+                </div>
+                <div class="myImgSlides fade"  data-slider-id="2">
+                  <img src="p2img3.png" >
+                  <div class="text">PDF generated results</div>
+                </div>
+
+                <a class="Imgprev"  data-slider-id="2" onclick="ImgplusSlides(-1, 2)">&#10094;</a>
+                <a class="Imgnext"  data-slider-id="2" onclick="ImgplusSlides(1, 2)">&#10095;</a>
+            </div>
+              <!-- The dots/circles -->
+              <div style="text-align:center" class="Imgdot-container" data-slider-id="2">
+                <span class="Imgdot" onclick="ImgcurrentSlide(1, 2)"></span>
+                <span class="Imgdot" onclick="ImgcurrentSlide(2, 2)"></span>
+                <span class="Imgdot" onclick="ImgcurrentSlide(3, 2)"></span>
+              </div>
+          </div>
+
+          <div class="rightcontent_text">A university project. Developed in Atom IDE using HTML, CSS and JavaScript.<br><br>
+            A music recommendation Web application using a cloud-client (server) architecture developed deploying Agile Methodology. Google cloud Firestore database has been used to store the data.<br><br>
+            Implementation of data analytics algorithms with machine learning i.e., Distance classifiers such as Euclidean Distance, Manhattan Distance and RBF to
+            perform the recommendations for the user. The results are viewed in a PDF format to the user.<br><br>
+            The 4 sections in first page of the PDF are:
+              <ul><li>The Recommendation system's logo</li>
+              <li>The graph of 4 different emotion category the songs fall in</li>
+              <li>The location of the Album's origin and</li>
+              <li>The songs in the database followed by the results generated by the 3 algorithms based on user preference.</li></ul>
+              <button id="GithubButton"><a href="https://github.com/Preethiplease/MSc-Dissertation">GitHub 🔗</a></button>
+          </div>
+       </div>
+
+    <div class="mySlides">
+      <p>My Portfolio<br><br>Project 3 - Mobile Robots</p>
+
+      <div class="leftcontent_images">
+        <div class="project_imageslideshow" data-slider-id="3">
+            <div class="myImgSlides fade"  data-slider-id="3">
+              <img src="p3img1.png">
+              <div class="text">The Initial Layout</div>
+            </div>
+            <div class="myImgSlides fade"  data-slider-id="3">
+              <img src="p3img2.png">
+              <div class="text">Finding the beacon</div>
+            </div>
+            <div class="myImgSlides fade"  data-slider-id="3">
+              <img src="p3img3.png" >
+              <div class="text">Working of PID controller</div>
+            </div>
+
+            <a class="Imgprev"  data-slider-id="3" onclick="ImgplusSlides(-1, 3)">&#10094;</a>
+            <a class="Imgnext"  data-slider-id="3" onclick="ImgplusSlides(1, 3)">&#10095;</a>
+        </div>
+          <!-- The dots/circles -->
+          <div style="text-align:center" class="Imgdot-container" data-slider-id="3">
+            <span class="Imgdot" onclick="ImgcurrentSlide(1, 3)"></span>
+            <span class="Imgdot" onclick="ImgcurrentSlide(2, 3)"></span>
+            <span class="Imgdot" onclick="ImgcurrentSlide(3, 3)"></span>
+          </div>
+      </div>
+
+      <div class="rightcontent_text">A university project. Programming of a mobile robot (pioneer 3D-X) in Coppeliasim (V-Rep) using Python.<br><br>
+          The robot had to complete several tasks:
+            <ul><li>Task 1: find the middle of the starting room and exit</li>
+            <li>Task 2: find the beacon</li>
+            <li>Task 3: map the environment to a certain degree</li>
+            <li>Task 4: return to the centre of the starting room</li></ul><br>
+          In the end the robot the robot has a Finite State Machine (FSM) to make sure that the tasks are completed.<br><br>
+          It uses ultrasonic proximity sensors to avoid obstacles and to map the environment on an occupancy grid. It uses a PID controller to keep inline with the path or to follow walls. <br><br>
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <p>My Portfolio<br><br>Project 4 - Solving TSP with K-NN algorithm</p>
+      <div class="leftcontent_images">
+
+        <div class="project_imageslideshow" data-slider-id="4">
+            <div class="myImgSlides fade"  data-slider-id="4">
+              <img src="p4img1.png">
+              <div class="text">Unity Workspace</div>
+            </div>
+            <div class="myImgSlides fade"  data-slider-id="4">
+              <img src="p4img2.png">
+              <div class="text">Unity Workspace</div>
+            </div>
+            <div class="myImgSlides fade"  data-slider-id="4">
+              <img src="p4img3.png" >
+              <div class="text">Results finding the shortest path</div>
+            </div>
+
+            <a class="Imgprev"  data-slider-id="4" onclick="ImgplusSlides(-1, 4)">&#10094;</a>
+            <a class="Imgnext"  data-slider-id="4" onclick="ImgplusSlides(1, 4)">&#10095;</a>
+        </div>
+
+          <!-- The dots/circles -->
+          <div style="text-align:center" class="Imgdot-container" data-slider-id="4">
+            <span class="Imgdot" onclick="ImgcurrentSlide(1, 4)"></span>
+            <span class="Imgdot" onclick="ImgcurrentSlide(2, 4)"></span>
+            <span class="Imgdot" onclick="ImgcurrentSlide(3, 4)"></span>
+          </div>
+      </div>
+
+      <div class="rightcontent_text">A university project. Developed using Unity, coded in C#.<br><br>
+          Implementation of K-Nearest neighbor algorithm to find the shortest path to solve the travelling salesman problem.<br><br>
+          The algorithm in 4 steps:
+            <ul><li>Start with a random initial node, call in the ‘current node’ (start city).</li>
+            <li>Find the nearest unvisited node as the next point to travel to.</li>
+            <li>Now set this node as ‘current node’ and mark it as ‘visited’, and find the next unvisited nearest node.</li>
+            <li>When all the nodes are visited once, terminate the condition and return to the starting node.</li></ul><br><br>
+      </div>
+    </div>
+
+    <div class="mySlides">
+          <p>My Portfolio<br><br>Project 5 - Natural Language Processing</p>
+            <div class="leftcontent_images">
+
+              <div class="project_imageslideshow" data-slider-id="5">
+                  <div class="myImgSlides fade"  data-slider-id="5">
+                    <img src="p5img1.png">
+                    <div class="text">The resulting chatbot response</div>
+                  </div>
+                  <div class="myImgSlides fade"  data-slider-id="5">
+                    <img src="p5img2.png">
+                    <div class="text">The reduction of loss as iterations increased</div>
+                  </div>
+
+                  <a class="Imgprev"  data-slider-id="5" onclick="ImgplusSlides(-1, 5)">&#10094;</a>
+                  <a class="Imgnext"  data-slider-id="5" onclick="ImgplusSlides(1, 5)">&#10095;</a>
+              </div>
+              <!-- The dots/circles -->
+              <div style="text-align:center" class="Imgdot-container" data-slider-id="5">
+                <span class="Imgdot" onclick="ImgcurrentSlide(1, 5)"></span>
+                <span class="Imgdot" onclick="ImgcurrentSlide(2, 5)"></span>
+              </div>
+          </div>
+
+          <div class="rightcontent_text">A university project. Developed using Jupiter Python, scripted in Python.<br><br>
+              The main purpose of this project is to make possible modifications to a basic recurrent sequence-to-sequence chatbot code developed by Matthew Inka, provided through a tutorial link with different parameters to tune in such a way that the chatbot can interact with the user much efficiently with appropriate responses for sequenced questions.<br><br>
+              The tutorial code given is trained with 4000 words in English with lines from the cornel movie and 500 iterations to train the chatbot with.<br><br>The chatbot was able to respond to, and identify the vocabulary within the Cornell movie dataset but it displayed the message ‘Unknown word’ every time it encountered new words beyond it.<br><br>
+              Considering this as a drawback, I have trained the robot multiple times by increasing the iterations to 5000 and the chatbot’s responses have improved.<br><br>
+          </div>
+      </div>
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+    <div class="dot-container">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+      <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+
+ </div>  <!--End of slideshow-container -->
+
+
+  <marquee direction="right" behavior="scroll">
+    <img id="walking-cat" title="GIF via Pinterest, please check credit section on the side menu for source" src="walkingcat.gif" alt="Walking cat GIF via Pinterest">
+  </marquee>
+
+      <footer>
+        <p><b>&copy; 2024 Preethi Leelavathy. All rights reserved.</b><br><br>
+        Please review the Credits section in the side menu to verify the sources for images and GIFs<br>
+        This page will be continuously updated and expanded. Thank you for visiting my corner of the web, feel free to get in touch or to say hello!<br></p>
+      </footer>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<!-- -----------------------------------------------------------------/
+  // Original Code Structure: Preethi Leelavathy                      /
+  // Project: My Personal Website                                     /
+  // Description: this is the cv page of my website                   /
+  // Date: August-8-2024                                              /
+  //------------------------------------------------------------------/
+ -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+    <title>CV - Preethi's Personal Webpage</title>
+    <link rel="stylesheet" href="cv.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        fetch("header.html")
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("header-placeholder").innerHTML = data;
+            adjustLayout();
+            // Initialize the header scripts after the header is loaded
+            initializeHeaderScripts();  // This function is in your main JS file
+        })
+        .catch(error => console.log('Error loading header:', error));
+
+});
+function initializeHeaderScripts() {
+  const modal = document.getElementById("contactForm");
+ const btn = document.querySelector(".fa-envelope");
+ const span = document.querySelector(".close-btn");
+ const form = document.getElementById("contact-form");
+ const thankYouMessage = document.getElementById("thank-you-message");
+
+ if (btn) {
+     btn.onclick = function (event) {
+         event.preventDefault();
+         modal.style.display = "block";
+         console.log("Email button clicked - modal opened.");
+     };
+ } else {
+     console.error("Email button not found.");
+ }
+
+ if (span) {
+     span.onclick = function () {
+         modal.style.display = "none";
+         console.log("Close button clicked - modal closed.");
+     };
+ } else {
+     console.error("Close button not found.");
+ }
+
+ window.onclick = function (event) {
+     if (event.target == modal) {
+         modal.style.display = "none";
+         console.log("Click outside modal detected - modal closed.");
+     }
+ };
+
+ // Form submission with reCAPTCHA
+ if (form) {
+     form.addEventListener("submit", function (event) {
+         event.preventDefault(); // Prevent page refresh
+
+         const submitButton = form.querySelector('button.g-recaptcha');
+         if (submitButton) {
+             submitButton.classList.add('loading'); // Apply loading state
+             submitButton.disabled = true; // Disable the button
+         }
+
+         console.log("Form submission initiated...");
+
+         const formData = new FormData(form);
+         for (let [key, value] of formData.entries()) {
+             console.log(`FormData: ${key} = ${value}`);
+         }
+
+         fetch(form.action, {
+             method: "POST",
+             body: formData,
+         })
+             .then(response => {
+                 console.log("Response received from the server.");
+                 if (response.ok) {
+                     console.log("Form submission successful, displaying thank-you message.");
+                     return response.text(); // Get response text
+                 } else {
+                     console.error("Form submission failed with status:", response.status);
+                     throw new Error("Form submission failed with status: " + response.status);
+                 }
+             })
+             .then(text => {
+                 console.log("Server response text:", text);
+                 form.style.display = "none";
+                 thankYouMessage.style.display = "block";
+
+                 setTimeout(function () {
+                     modal.style.display = "none";
+                     form.reset();
+                     form.style.display = "block";
+                     thankYouMessage.style.display = "none";
+
+                     if (submitButton) {
+                         submitButton.classList.remove('loading'); // Remove loading state
+                         submitButton.disabled = false; // Enable the button
+                     }
+
+                     console.log("Modal closed after 3 seconds.");
+                 }, 5000); // 5 seconds
+             })
+             .catch(error => {
+                 console.error("Error during form submission:", error);
+                 if (submitButton) {
+                     submitButton.classList.remove('loading'); // Remove loading state
+                     submitButton.disabled = false; // Enable the button
+                 }
+             });
+     });
+ } else {
+     console.error("Contact form not found.");
+ }
+
+// Side menu logic
+const menuButton = document.querySelector(".menu-button");
+const sideMenu = document.querySelector(".side-menu");
+const closeBtn = document.querySelector(".side-menu .close-btnn");
+
+if (menuButton && sideMenu) {
+  menuButton.addEventListener("click", function() {
+    console.log("Menu button clicked.");
+    sideMenu.classList.toggle("open");
+  });
+} else {
+  console.error("Menu button or side menu not found.");
+}
+
+if (closeBtn) {
+  closeBtn.addEventListener("click", function() {
+    console.log("Close button for side menu clicked.");
+    sideMenu.classList.remove("open");
+  });
+} else {
+  console.error("Close button for side menu not found.");
+}
+
+// Close the side menu when the user clicks outside of it
+window.addEventListener("click", function(event) {
+  if (sideMenu.classList.contains("open") && !sideMenu.contains(event.target) && !menuButton.contains(event.target)) {
+    console.log("Click detected outside side Menu. Closing side menu.");
+    sideMenu.classList.remove("open");
+  }
+});
+
+}
+      function scaleContent() {
+        const header = document.querySelector('#header-placeholder'); // Reference to the header
+        const bodyContent = document.querySelector('.body-content'); // Reference to the body content wrapper
+        const html = document.documentElement;
+
+        // Get the dimensions of the viewport
+        const width = window.innerWidth;
+
+        // Calculate the scale factor for the width
+        const scaleX = width / html.scrollWidth;
+
+        // Apply the scale transformation based on width
+        header.style.transform = `scale(${scaleX})`;
+        header.style.transformOrigin = 'top left';
+        bodyContent.style.transform = `scale(${scaleX})`;
+        bodyContent.style.transformOrigin = 'top left';
+
+        // Adjust the widths to fit within the viewport
+        header.style.width = `${width / scaleX}px`;
+        bodyContent.style.width = `${width / scaleX}px`;
+        bodyContent.style.height = 'auto'; // Let the height adjust automatically
+      }
+
+      function resetScale() {
+        const header = document.querySelector('#header-placeholder'); // Reference to the header
+        const bodyContent = document.querySelector('.body-content'); // Reference to the body content wrapper
+        header.style.transform = 'none';
+        header.style.width = '100%'; // Reset width to 100%
+        bodyContent.style.transform = 'none';
+        bodyContent.style.width = '100%'; // Reset width to 100%
+        bodyContent.style.height = 'auto'; // Reset height to auto
+      }
+
+      function adjustLayout() {
+        resetScale();
+        requestAnimationFrame(scaleContent);
+      }
+
+      // Initial scale on page load
+      window.addEventListener('resize', adjustLayout);
+    </script>
+    <style>
+      table {
+        margin-top: 80px;
+        width: 1000px;
+        height: auto;
+        border: 2px solid black;
+        border-collapse: collapse; /* Make sure borders don't double */
+      }
+      th {
+        font-weight: bold;
+        height: 50px;
+        Font-size: 18px;
+
+      }
+
+
+      .sub-header {
+        font-style: italic;
+      }
+
+        th, td {
+          padding: 10px;
+          text-align: center;
+          border: 1.5px solid black; /* Table cell borders */
+        }
+
+        td{
+          padding:20px;
+        }
+
+        a {
+          text-decoration:underline;
+          color:black;
+        }
+
+        /* Footer styling */
+        footer {
+          border-top: 2px solid black; /* Example border */
+          width: 100%;
+          position: absolute;
+          text-align: center;
+          background-color: #F3CFC6;
+          margin-top: 20%; /* Push footer to the bottom */
+        }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="header-placeholder" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;"></div>
+
+    <div class="body-content" style="padding-top: 100px;"> <!-- Ensure the body content is padded to avoid overlap with the fixed header -->
+
+
+      <table class="table" border='1' align="center">
+      <!-- Table Header -->
+      <tr>
+          <th>Content</th>
+          <th>Whereabouts on my website</th>
+          <th>Creator</th>
+          <th>Source</th>
+      </tr>
+
+      <!-- Sub-header Row -->
+      <tr class="sub-header">
+        <th colspan="4">Images</th>
+      </tr>
+
+      <!-- <br><br><a href="#">Original Source Link</a> -->
+
+      <!-- Table Row 1 -->
+      <tr>
+          <td align="center"><img src="roses.png"  width="100" height="200" alt=""></td>
+          <td><a href="MyWebsite.html">Home Page</a></td>
+          <td>#</td>
+          <td><a href="https://www.pinterest.co.uk/pin/1266706139459314/">Pinterest Link</a></td>
+      </tr>
+
+      <!-- Table Row 2 -->
+      <tr>
+          <td align="center"><img src="2roses.png" width="100"  height="200" alt=""></td>
+          <td><a href="aboutme.html">About Me Page</a></td>
+          <td>#</td>
+          <td><a href="https://www.pinterest.co.uk/pin/1970393579477878/">Pinterest Link</a></td>
+      </tr>
+
+      <!-- Table Row 3 -->
+      <tr>
+        <td align="center"><img src="workspace.png" width="200"  height="130" alt=""></td>
+        <td><a href="cv.html">CV Page</a></td>
+          <td>PrathanChorruangsak</td>
+          <td><a href="https://www.istockphoto.com/photo/laptop-computer-cup-of-coffee-and-notebook-on-white-office-desk-top-view-with-copy-gm1461562524-495505339?irclickid=yyO0Hb1nixyKU0oXK5TIZz0zUkCzLbRhmxTtUc0&irgwc=1&cid=IS&utm_medium=affiliate&utm_source=Freerange+Stock+LLC&clickid=yyO0Hb1nixyKU0oXK5TIZz0zUkCzLbRhmxTtUc0&utm_content=258824&irpid=39115">Original Source Link</a><br><br><a href="https://www.istockphoto.com/portfolio/PrathanChorruangsak?mediatype=photography">Creator's Link</a></td>
+      </tr>
+
+      <!-- Table Row 4 -->
+      <tr>
+        <td align="center"><img src="pinkbutterfly.png" width="100"  height="100" alt=""></td>
+        <td><a href="personalgrowth.html">Personal Growth Page</a></td>
+          <td>#</td>
+          <td><a href="https://fi.pinterest.com/pin/281543721232525/">Pinterest Link</a></td>
+      </tr>
+
+      <!-- Table Row 5 -->
+      <tr>
+        <td align="center"><img src="pinkflowersborder.png" width="200"  height="200" alt=""></td>
+        <td><a href="personalgrowth.html">Personal Growth Page</a></td>
+          <td>#</td>
+          <td><a href="https://in.pinterest.com/pin/819866307187270934/">Pinterest Link</a><br><br><a href="https://en.pngtree.com/freepng/pink-flower-flower-branch-line_4592675.html">Original Source Link</a><br><br><a href="pink flowers PNG designed by 588ku from https://es.pngtree.com/freepng/pink-flower-flower-branch-line_4592675.html? sol=downref&id=bef">Suggest Attribute Link</a></td>
+      </tr>
+
+      <tr class="sub-header">
+        <th colspan="4">Cats</th>
+      </tr>
+
+      <!-- Table Row 6 cat 1 -->
+      <tr>
+        <td align="center"><img src="sleepingcat.gif" width="160"  height="160" alt=""></td>
+        <td><a href="MyWebsite.html">Home Page</a></td>
+        <td>#</td>
+        <td><a href="https://www.pinterest.co.uk/pin/242561129984471653/">Pinterest Link</a></td>
+      </tr>
+
+      <!-- Table Row 7 cat 2 -->
+      <tr>
+        <td align="center"><img src="starcat.gif" width="120"  height="120" alt=""></td>
+        <td><a href="MyWebsite.html">Home Page</a></td>
+          <td>#</td>
+          <td><a href="https://www.pinterest.co.uk/pin/15692298696212342/">Pinterest Link</a></td>
+      </tr>
+
+      <!-- Table Row 8 cat 3 -->
+      <tr>
+        <td align="center"><img src="watchingcat.png" width="150"  height="80" alt=""></td>
+        <td><a href="aboutme.html">About Me Page</a></td>
+          <td>Diane Robison Design</td>
+          <td><a href="https://in.pinterest.com/pin/1048846200711858631/">Pinterest Link</a><br><br><a href="https://taylorjoelleblog.com/2018/10/05/free-halloween-printables/">Original Source Link</a><br><br><a href="https://www.etsy.com/uk/people/dilarob?ref=shop_home_header">Creator's Link</a></td>
+      </tr>
+
+      <!-- Table Row 9 cat 4 -->
+      <tr>
+        <td align="center"><img src="skatingcat.png" width="120"  height="120" alt=""></td>
+        <td><a href="cv.html">CV Page</a></td>
+          <td>Yayatachdiyat0</td>
+          <td><a href="https://www.pinterest.co.uk/pin/15692298696212342/">Pinterest Link</a><br><br><a href="https://www.teepublic.com/user/yayat-44a8769c-1eca-4564-826b-ef75e62daf72">Original Source Link</a></td>
+      </tr>
+
+      <!-- Table Row 10 cat 5 -->
+      <tr>
+        <td align="center"><img src="walkingcat.gif" width="150"  height="100" alt=""></td>
+        <td><a href="portfolio.html">Portfolio Page</a></td>
+          <td>Magic Cartoon</td>
+          <td><a href="https://www.pinterest.co.uk/pin/900368150484114869/">Pinterest Link</a><br><br><a href="https://www.youtube.com/watch?v=hXZ6uSx3DkY">YouTube Link</a></td>
+      </tr>
+
+      <!-- Table Row 11 cat 6 -->
+      <tr>
+        <td align="center"><img src="popcat.gif" width="150"  height="100" alt=""></td>
+        <td><a href="music.html">Music Page</a></td>
+          <td>Muddle ASMR</td>
+          <td><a href="https://youtu.be/LnkObV1zt5Y?si=9onDheU8RkNCNv39">YouTube Link</a></td>
+      </tr>
+
+      <!-- Table Row 12 cat 7 -->
+      <tr>
+        <td align="center"><img src="lazycat.png" width="150"  height="110" alt=""></td>
+        <td><a href="personalgrowth.html">Personal Growth Page</a></td>
+          <td>Temu Advertisement for Tee's</td>
+          <td><a href="https://www.temu.com/uk/1pc--cat-heat-transfer-sticker-diy-iron-on-clothing-supplies-appliques-for-clothes-t-shirt-making-pillow-decorating-g-601099544571358.html?top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Fproduct%2Ffancy%2F9035ba53-268b-4b3a-b77a-ec94070b2e3c.jpg&spec_gallery_id=4094489959&share_token=uj0dqcrHAWiAFZWlNpuz72r_zFmyZ8EyIDlDo0BdAa0Hd8MgFSt3cbt9vhKBlNqw8O6zKKhY7RfHNxJmRxBVXX309jKzG4QefIjUK0IC1i4kneJ7EYoojGFzLqriv1mb&refer_page_el_sn=209279&_x_vst_scene=adg&_x_ads_channel=pinterest&_x_ads_creative_id=4260608273185&_x_ads_id=2680078428280&_x_ads_set=626750366627&_x_ads_sub_channel=shopping&_x_ns_catalog_id=1548674636180&_x_ns_creative=4260608273185&_x_ns_gid=601099544571358&_x_ns_product_id=17592335547696&_x_ns_site_id=102&_x_bg_adid=1001682482&_x_ads_account=549766371122&refer_page_name=kuiper&refer_page_id=14021_1726051575088_65wmmuid5e&refer_page_sn=14021&_x_sessn_id=jb4lr9641e">Temu Link</a></td>
+
+      </tr>
+    </table>
+
+      <footer>
+        <p><b>&copy; 2024 Preethi Leelavathy. All rights reserved.</b><br><br><br>
+        This page will be continuously updated and expanded. Thank you for visiting my corner of the web, feel free to get in touch or to say hello!<br></p>
+      </footer>
+
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,280 @@
+/* Resetting default margin and padding for the body */
+body {
+  margin: 0;
+  padding: 0;
+  /* min-width:1375px; */
+  background-color: #F3CFC6;
+}
+
+
+/* Styling the header container */
+.header-container {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: #F3CFC6;
+  z-index: 200;
+}
+
+/* Line running through the middle of the block */
+.header-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px; /* Thickness of the line */
+  background-color: black; /* Color of the line */
+  transform: translateY(-50%);
+  z-index: 2; /* Ensure the line is behind the content */
+}
+
+/* Styling the content area of the header */
+.header-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 2; /* Ensure content is above the line */
+}
+
+/* Styling the text within the header */
+.header-text, .secondheader-text, .thirdheader-text{
+  text-decoration: none; /* Remove underline */
+  color: black; /* Default text color */
+  font-size: 30px; /* Increase the font size */
+  font-weight: bold; /* Optionally make the text bold */
+  background-color: #F3CFC6; /* Match the container background */
+  z-index: 2; /* Ensure the text is above the line */
+  margin-left: 25px; /* Space from the left */
+  padding: 0 10px; /* Create space around the text */
+  position: relative; /* Ensure positioning for the tooltip */
+}
+
+/* Styling the icons and menu button */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between icons */
+  background-color: #F3CFC6; /* Match the container background */
+  padding: 0 10px; /* Create space around the text */
+  margin-right: 20px;
+}
+
+.header-icons a, .header-icons button {
+  color: black;
+  font-size: 24px; /* Size of the icons */
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header-icons a:hover, .header-icons button:hover, .header-text:hover {
+  transition: transform 0.5s;
+  transform: scale(1.03); /* Scale up the icons by 10% */
+  color: white; /* Change to desired hover color */
+}
+
+
+/* modal stuff */
+
+/* The Modal (background) */
+.modal {
+  box-sizing: content-box;
+  display: none; /* Hidden by default */
+  position: absolute; /* Stay in place */
+  z-index: 1001; /* Sit on top of everything */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100vh; /* Full height */
+  background-color: rgba(51, 51, 51, 0.95); /* 50% transparency*/
+  /* background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  padding-top: 50px; /* Space from the top */
+  overflow: inherit; /* Prevent scroll within the modal */
+}
+
+.modal-content {
+  background-color: #f4efec;
+  margin: 5% auto; /* Center the modal */
+  padding: 30px;
+  border: 2px solid black;
+  width: 50%; /* Set width for the modal content */
+}
+/* Style the input fields inside the modal */
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content textarea{
+/* .modal-content input[type="file"]  { */
+  width: 100%; /* Full width of the modal */
+  padding: 10px; /* Padding inside the input field */
+  margin: 8px 0; /* Margin between input fields */
+  display: inline-block;
+  border: 1px solid #838383; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  box-sizing: border-box; /* Ensures padding doesn't affect the total width */
+  font-size: 16px; /* Font size */
+}
+
+
+/* Style the labels */
+.modal-content label {
+  font-size: 14px; /* Font size for labels */
+  color: #333; /* Text color */
+  font-weight: bold; /* Bold text */
+}
+
+/* Style the submit button */
+.modal-content button.g-recaptcha {
+  width: 100%; /* Full width button */
+   /* background-color: #4CAF50; /*Green background  */
+  background-color: #F3CFC6;
+  color: black; /* White text */
+  padding: 14px 20px; /* Padding */
+  margin-top: 10px; /* Margin on top */
+  border: 1px solid #838383; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  font-size: 16px; /* Font size */
+  /* font-weight: bold; */
+  position: relative; /* For positioning dots */
+  overflow: hidden; /* Hide overflow for dots */
+}
+
+/* Darker green on hover */
+.modal-content button.g-recaptcha:hover {
+  background-color: #d6b3ab; /* Darker green */
+}
+
+/* Style for the loading state */
+.modal-content button.g-recaptcha.loading {
+  background-color: #d6b3ab; /* Dark gray for loading state */
+  cursor: wait;
+}
+
+/* Show three dots on the button during loading */
+.modal-content button.g-recaptcha.loading::after {
+  content: 'Sending...'; /* Show three dots */
+  position: absolute;
+  padding:5px 20px;
+  background-color: #d6b3ab;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: black; /* Same color as the button text */
+}
+
+
+/* Optional: Style the h2 heading */
+.modal-content h2 {
+  /* font-size: 24px; /* Font size */
+  color: #333; /* Text color */
+  /* margin-bottom: 20px; /* Space below heading */
+  text-align: center; /* Center align the heading */
+}
+/* The Close Button */
+.close-btn {
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: transform 0.3s;
+}
+
+
+
+
+/* side menu stuff */
+
+.side-menu {
+  display: none;
+  position: relative;
+  /* z-index: 2000; */
+  top: 0;
+  right: -1375px;
+  width: 225px;
+  height: 100vh;
+  box-sizing: content-box;
+
+  /* background-color: rgba(0,0,0,0.5); */
+  /* background-color: rgba(244, 239, 236, 0.5); /* 50% transparent */
+  /* background-color: #333; */
+  background-color: rgba(51, 51, 51, 1); /* 50% transparency
+
+  overflow-y:hidden;
+  /* border-left: 2px solid black; */
+
+  padding-top: 60px;
+  color:#f4efec;
+}
+
+
+.side-menu.open {
+  right: -1150px;
+  z-index:2000;
+  display: block;
+
+
+
+}
+
+/* Style the links inside the menu */
+.side-menu ul {
+    list-style-type: none;   /* Remove bullet points */
+    padding: 0;
+      margin-top: 50px;
+}
+
+.side-menu ul li {
+
+    padding: 16px;
+    text-align: center;
+}
+
+#fun {
+  font-size: 15px;
+}
+
+
+.side-menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+    margin-top: 10px;      /* Make the link cover the entire list item */
+}
+
+/* Hover effects */
+.side-menu ul li a:hover {
+   transform: scale(1.2);
+   transition: transform 0.3s;
+   padding: 20px;
+    padding:0;
+    font-weight: bold;
+}
+
+/* Button for closing the menu (optional) */
+.close-btnn {
+    position: absolute;
+    top: 25px;
+    right: 55px;
+    font-size: 24px;
+    cursor: pointer;
+}
+.close-btnn:hover, .close-btnn:focus{
+  transform: scale(1.2);
+  transition: transform 0.3s;
+  color: white;
+}

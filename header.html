@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+    <title>Header and footer</title>
+    <link rel="stylesheet" href="header.css"> <!-- Include header styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  </head>
+  <body>
+<div class="header-container">
+      <div class="header-content">
+    <a href="MyWebsite.html" class="header-text" title="Go to Home Page">Preethi Leelavathy</a>
+    <div class="header-icons">
+        <a href="https://www.linkedin.com/in/preethi-leelavathy-488518172/" target="_blank" title="LinkedIn page" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com/preethiplease/?next=%2F" target="_blank" title="Instagram page" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="javascript:void(0);" target="_blank" title="Send an Email" aria-label="Gmail" id="openContactForm">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <button class="menu-button" data-tooltip="Menu" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        </div>
+      </div>
+
+</div>
+
+  <!-- Modal Contact Form -->
+  <div id="contactForm" class="modal">
+      <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <!-- <h2>Get In Touch With Me</h2> -->
+
+          <form id="contact-form" action="https://formsubmit.co/b2fe5989333dca384b690feb9d924803" method="POST" enctype="multipart/form-data">
+
+            <h2>Get In Touch With Me</h2>
+
+              <label for="name">Your Name:</label><br>
+              <input type="text" id="name" name="name" required><br><br>
+
+              <label for="email">Your Email Id:</label><br>
+              <input type="email" id="email" name="email" required><br><br>
+
+              <label for="message">Your Message:</label><br>
+              <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+              <!-- <input type="file" id="attachment" name="attachment" accept="image/*,.pdf,.doc,.docx,.mp3"> -->
+
+
+              <!-- <label for="attachment">Attach a file (optional):</label><br>
+              <input type="file" id="attachment" name="attachment" ><br><br> -->
+              <!-- <input type="file" id="attachment" name="attachment" accept="image/*,.pdf,.doc,.docx,.mp3"><br><br> -->
+              <input type="hidden" name="_captcha" value="false">
+                <button type= "submit" class="g-recaptcha"
+                        data-sitekey="your-site-key"
+                        data-callback="onSubmit"
+                        data-action="submit">Send</button>
+              </form>
+          <!-- a thank you message div -->
+          <div id="thank-you-message" style="display:none; text-align: center;">
+              <h3> Your message has been sent ✔️<br><br><br> Thank you!</h3>
+          </div>
+      </div>
+    </div>
+
+
+          <!-- Your menu container -->
+          <nav class="side-menu">
+             <span class="close-btnn">&times;</span>
+            <ul>
+                 <li><a href="MyWebsite.html">Home</a></li>
+                 <li><a href="MyWebsite.html#secondheader" id="fun">Home - Nibbles</a></li>
+                 <li><a href="MyWebsite.html#thirdheader"id="fun">Home - Sandbox</a></li><br>
+                 <li><a href="aboutme.html">About</a></li>
+                 <li><a href="cv.html">CV</a></li>
+                 <li><a href="portfolio.html">Portfolio</a></li>
+                 <li><a href="music.html">Music</a></li>
+                 <li><a href="personalgrowth.html">Personal Growth</a></li><br><br>
+                 <li><a href="credits.html">Credits</a></li>
+             </ul>
+          </nav>
+
+
+          <!-- <div class="credits-modal" id="creditsModal">
+            <div class="credits-modal-content">
+              <span class="close-btn">&times;</span>
+              <h2>Content - Source</h2>
+              <img src="aboutme.png" alt="" width="100" height ="100"> <p><a href="https://www.pinterest.co.uk/pin/1970393579477878/">About me tile image source</a>
+
+            </div>
+          </div> -->
+
+</body>
+    </html>

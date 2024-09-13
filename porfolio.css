@@ -1,0 +1,362 @@
+/* Resetting default margin and padding for the body */
+body {
+  transform-origin: top left;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Hide horizontal overflow */
+
+}
+
+.body-content {
+  width: 100%;
+  min-width: 1375px;
+  flex: 1;
+  height: auto;
+  padding-top: 100px; /* Adjust padding to match header height */
+}
+
+
+.Note {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  overflow: hidden;
+  width:30%;
+  margin:20px;
+  margin-left:35%;
+  transition: all 0.3s ease;
+}
+
+.Note h3 {
+  cursor: pointer;
+  margin: 0;
+  padding: 10px;
+  text-decoration: underline;
+}
+
+.Note p {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.Note:hover {
+  width:80%;
+  margin-left:10%;
+  background-color: rgba(244, 239, 236, 1); /* Change background opacity when expanded */
+}
+.Note:hover h3 {
+  margin:0;
+  text-decoration: none;
+}
+
+.Note:hover p {
+  max-height: 1000px; /* Set a large enough value to ensure the entire text is visible */
+  opacity: 1;
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
+
+* {box-sizing: border-box}
+
+
+/* Slideshow container */
+.slideshow-container {
+  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.2); /* Optional: add a shadow for a more pronounced effect */
+  width: 95%; /* Ensure the slider takes up the full width */
+  margin-top: 10px;
+  margin-left: 2.5%;
+  position: relative; /* Relative position to manage absolute elements inside */
+  background-color: #f4efec;
+  display: flex;
+  height: auto;
+  border-radius: 3%;
+}
+
+/* Slides */
+.mySlides {
+  display: none;
+  padding: 30px;
+  text-align: center;
+  font-size: 24px;
+  width: 100%;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 5%;
+  z-index: 200;
+  width: auto;
+  height: auto;
+  margin-top: 0;
+  padding: 25px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev {
+  /* position: absolute; */
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.05);
+  z-index: 100;
+}
+
+/* The dot/bullet/indicator container */
+.dot-container {
+  text-align: center;
+  padding: 10px;
+  margin-top: 130px;
+  position: absolute;
+  background-color: #f4efec;
+  border-bottom: 1.5px solid black;
+  width: 100%;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: 0 2px;
+  background-color: #F3CFC6;
+  border-radius: 50%;
+  border: 0.5px solid black;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+/* Normalize padding and margins */
+.mySlides p, .mySlides q {
+  margin: 0;          /* Remove default margins */
+  padding: 0;      /* Add consistent padding */
+  display: block;     /* Make <q> behave like a block element */
+}
+
+
+.mySlides p {
+  font-weight: bold;  /* Bold paragraphs, if desired */
+}
+
+/* Add a background color to the active dot/circle */
+.active, .dot:hover {
+  background-color: grey;
+}
+
+/* Hide the images by default */
+.myImgSlides {
+  display: none;
+}
+
+img {
+  vertical-align: middle;
+  width: 100%;
+  height: 520px;
+  z-index: 1;
+  padding: 40px 30px;
+  border: 0.5px solid black;
+  border-radius: 5%;
+
+}
+
+/* Next & previous buttons */
+.Imgprev, .Imgnext {
+cursor: pointer;
+position: absolute;
+top: 0%;
+width: 15px;
+height: 100%;
+color: rgba(0,0,0,0);
+font-weight: bold;
+font-size: 18px;
+transition: 0.3s ease;
+z-index: 0;
+user-select: none;
+}
+
+/* Position the "next button" to the right */
+.Imgnext {
+position: absolute;
+right: -2%;
+}
+
+.Imgprev {
+position: absolute;
+left: -2%;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.Imgprev:hover, .Imgnext:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+
+/* Caption text */
+.text {
+  color: black;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 2px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: black;
+  font-size: 13px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 10px;
+}
+
+.leftcontent_images{
+  float: left;
+  width:100%;
+}
+
+.rightcontent_text {
+  margin-bottom: 2%;
+  padding: 15px;
+  position:absolute;
+  text-align: justify;
+  margin-left: 60%;
+  margin-right: 3%;
+  margin-top: 10%;
+  font-size: 20px;
+}
+
+/* project_imageslideshow */
+.project_imageslideshow {
+  max-width: 60%;
+  position: relative;
+  margin-left: 1%;
+  margin-top: 10%;
+  background-color: #f4efec;
+  z-index: 1;
+}
+
+/* The dot/bullet/indicator container */
+.Imgdot-container {
+    text-align: center;
+    padding: 10px;
+    padding-bottom: 50px;
+    margin-left: 1%;
+    position: relative;
+    background-color: #f4efec;
+    width: 60%;
+    z-index: 0;
+
+}
+
+
+/* The dots/bullets/indicators */
+.Imgdot {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin-left: 0;
+  background-color: #F3CFC6;
+  border-radius: 50%;
+  border: 0.5px solid black;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.Imgactive, .Imgdot:hover {
+  background-color: grey;
+}
+
+img:hover  {
+  transform: scale(1.01);
+  background-color: rgba(0,0,0,0.05);
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+
+
+#GithubButton {
+  margin-left: 20px;
+    background-color:  #F3CFC6; /* Green background */
+    color: black; /* White text color */
+    padding: 10px 15px; /* Padding for the button */
+    border: 1px solid black; /* Remove default border */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 14px; /* Text size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.2s ease; /* Smooth transition for background color */
+}
+
+#GithubButton:hover {
+    background-color: #d6b3ab; /* Darker green on hover */
+}
+
+#GithubButton:active {
+  background-color: #d6b3ab; /* Darker green on hover */
+    transform: scale(0.95); /* Slightly reduce size on click */
+}
+
+#GithubButton a {
+  text-decoration: none;
+  color:black;
+  font-weight: bold;
+}
+
+#GithubButton:active a {
+color:white
+}
+
+
+
+
+ marquee {
+  position: fixed;
+  width:100%;
+  margin-top: 9.33em; /* Adjust the margin as needed */
+}
+
+marquee img {
+  width: 170px;
+  height: auto;
+  border: none;
+}
+marquee img:hover{
+  background-color: #F3CFC6;
+}
+/* Footer styling */
+footer {
+  border-top: 2px solid black; /* Example border */
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  background-color: #F3CFC6;
+  margin-top: 15em; /* Push footer to the bottom */
+}
