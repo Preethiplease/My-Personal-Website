@@ -305,23 +305,23 @@ img:hover  {
 
 #GithubButton {
   margin-left: 20px;
-    background-color:  #F3CFC6; /* Green background */
-    color: black; /* White text color */
-    padding: 10px 15px; /* Padding for the button */
-    border: 1px solid black; /* Remove default border */
-    border-radius: 10px; /* Rounded corners */
-    font-size: 14px; /* Text size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.2s ease; /* Smooth transition for background color */
+  background-color:  #F3CFC6; /* Green background */
+  color: black; /* White text color */
+  padding: 10px 15px; /* Padding for the button */
+  border: 1px solid black; /* Remove default border */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 14px; /* Text size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.2s ease; /* Smooth transition for background color */
 }
 
 #GithubButton:hover {
-    background-color: #d6b3ab; /* Darker green on hover */
+  background-color: #d6b3ab; /* Darker green on hover */
 }
 
 #GithubButton:active {
   background-color: #d6b3ab; /* Darker green on hover */
-    transform: scale(0.95); /* Slightly reduce size on click */
+  transform: scale(0.95); /* Slightly reduce size on click */
 }
 
 #GithubButton a {
@@ -331,7 +331,7 @@ img:hover  {
 }
 
 #GithubButton:active a {
-color:white
+  color:white
 }
 
 
