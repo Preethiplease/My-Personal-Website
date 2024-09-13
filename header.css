@@ -91,8 +91,8 @@ body {
   top: 0;
   width: 100%; /* Full width */
   height: 100vh; /* Full height */
+  min-height: 1000px;
   background-color: rgba(51, 51, 51, 0.95); /* 50% transparency*/
-  /* background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
   padding-top: 50px; /* Space from the top */
   overflow: inherit; /* Prevent scroll within the modal */
 }
@@ -108,7 +108,6 @@ body {
 .modal-content input[type="text"],
 .modal-content input[type="email"],
 .modal-content textarea{
-/* .modal-content input[type="file"]  { */
   width: 100%; /* Full width of the modal */
   padding: 10px; /* Padding inside the input field */
   margin: 8px 0; /* Margin between input fields */
@@ -200,12 +199,13 @@ body {
 
 .side-menu {
   display: none;
-  position: relative;
+  position: fixed;
   /* z-index: 2000; */
   top: 0;
-  right: -1375px;
+  right: 0;
   width: 225px;
   height: 100vh;
+  min-height: 1000px;
   box-sizing: content-box;
 
   /* background-color: rgba(0,0,0,0.5); */
@@ -222,12 +222,8 @@ body {
 
 
 .side-menu.open {
-  right: -1150px;
   z-index:2000;
   display: block;
-
-
-
 }
 
 /* Style the links inside the menu */

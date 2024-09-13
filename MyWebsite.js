@@ -53,10 +53,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Debug: check if the event listener for keydown works
-        document.addEventListener('keydown', setDirection);
+        // Updated keydown event listener
+        document.addEventListener('keydown', function(event) {
+            const activeElement = document.activeElement;
 
-        function setDirection(event) {
-            event.preventDefault(); // Prevent page scroll on arrow key press
+            // Check if the active element is an input or textarea, and allow normal behavior
+            if (activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA") {
+                return; // Allow default behavior for form input fields
+            }
+
+            // Prevent default behavior for game control keys
+            event.preventDefault();
             console.log("Key pressed:", event.keyCode);
 
             // Prevent moving in the opposite direction
@@ -69,7 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (event.keyCode === 40 && direction !== 'UP') { // DOWN arrow
                 nextDirection = 'DOWN';
             }
-        }
+        });
+
 
         function draw() {
             if (gameOver) {

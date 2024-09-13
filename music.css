@@ -69,8 +69,8 @@ body {
   width: 100%;
   overflow-y: hidden;
   position: relative;
-  height: 200vw;
-  max-height: 160vh;
+  height: 1300px;
+  /* min-height: 1300px; */
   transition: transform .5s ease-out;
   --n: 1;
   width: 100%;
