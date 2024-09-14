@@ -78,9 +78,9 @@ body {
   transform: translate(calc(var(--i, 0)/var(--n)*-100% ))
 }
 
-.container::-webkit-scrollbar {
+/* .container::-webkit-scrollbar {
   display: none; /* Chrome, Safari, and Edge */
-}
+/* } */
 
 .smooth { transition: transform calc(var(--f)*.5s) cubic-bezier(1, 1.59, .61, .74) }
 
@@ -160,14 +160,18 @@ iframe {
 iframe::-webkit-scrollbar {
   width: 6px; /* Adjust the width of the scrollbar */
 }
+
+.container::-webkit-scrollbar {
+  height: 10px;
+}
 /* Track of the scrollbar */
-iframe::-webkit-scrollbar-track {
+iframe::-webkit-scrollbar-track, .container::-webkit-scrollbar {
   background:  #F3CFC6; /* Color of the track */
   border:1px solid darkgrey;
   border-radius: 10px; /* Round the corners of the scrollbar */
 }
 /* Thumb (the draggable part of the scrollbar) */
-iframe::-webkit-scrollbar-thumb {
+iframe::-webkit-scrollbar-thumb, .container::-webkit-scrollbar-thumb {
   background-color: grey; /* Color of the thumb */
   border-radius: 10px; /* Round the corners of the scrollbar */
   border:1px solid darkgrey;
