@@ -5,7 +5,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Hide horizontal overflow */
+  overflow-x: hidden;
+  /* Hide horizontal overflow */
 
 }
 
@@ -13,13 +14,17 @@ body {
   width: 100%;
   min-width: 1375px;
   height: auto;
-  flex: 1; /* Ensure the body content takes up the remaining space */
-  padding-top: 100px; /* Adjust padding to match header height */
+  flex: 1;
+  /* Ensure the body content takes up the remaining space */
+  padding-top: 100px;
+  /* Adjust padding to match header height */
 }
 
 .personalgrowthbar img {
-  width: 100%; /* Take up 100% of the container width*/
-  min-width: 1375px; /* Minimum width of 1375px */
+  width: 100%;
+  /* Take up 100% of the container width*/
+  min-width: 1375px;
+  /* Minimum width of 1375px */
   height: auto;
   margin-top: 0;
   position: relative;
@@ -29,12 +34,14 @@ body {
 .overlaytext_1 {
   position: absolute;
   left: 50%;
-  top: 58%; /* Adjust as needed */
+  top: 58%;
+  /* Adjust as needed */
   font-size: 30px;
   font-weight: bold;
   transform: translateX(-50%);
   color: #303030;
-  background-color: transparent; /* Semi-transparent background for better readability */
+  background-color: transparent;
+  /* Semi-transparent background for better readability */
   text-align: Justify;
   box-sizing: border-box;
   z-index: 200;
@@ -44,10 +51,13 @@ body {
 
 /* Slideshow container */
 .slideshow-container {
-  width: 95%; /* Ensure the slider takes up the full width */
+  width: 95%;
+  /* Ensure the slider takes up the full width */
   margin-left: 2.5%;
   margin-top: 24%;
-  position: absolute;; /* Relative position to manage absolute elements inside */
+  position: absolute;
+  ;
+  /* Relative position to manage absolute elements inside */
   background-color: #f4efec;
   display: flex;
   height: auto;
@@ -58,12 +68,14 @@ body {
   display: none;
   padding: 30px;
   text-align: center;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* Optional: add a shadow for a more pronounced effect */
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  /* Optional: add a shadow for a more pronounced effect */
   width: 100%;
 }
 
 /* Next & previous buttons */
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
   top: 7.5%;
@@ -84,22 +96,24 @@ body {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
+
 .prev {
   left: 0;
   border-radius: 3px 0 0 3px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.05);
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.05);
   z-index: 100;
 }
 
-span{
+.personalgrowthbar span {
   padding: 10px;
 }
 
-a{
+a {
   font-weight: bold;
   text-decoration: none;
   color: black;
@@ -109,17 +123,22 @@ a{
 /* Normalize padding and margins */
 .mySlides p {
   font-size: 18px;
-  margin-top: 2%;          /* Remove default margins */
-  padding: 20px;      /* Add consistent padding */
-  display: block;     /* Make <q> behave like a block element */
+  margin-top: 2%;
+  /* Remove default margins */
+  padding: 20px;
+  /* Add consistent padding */
+  display: block;
+  /* Make <q> behave like a block element */
 }
 
 h2 {
   z-index: 2;
   display: inline-block;
   position: relative;
-  background-color: #f4efec;  /*Match the container background */
-  padding: 0 15px; /* Create space around the text */
+  background-color: #f4efec;
+  /*Match the container background */
+  padding: 0 15px;
+  /* Create space around the text */
 }
 
 /* Line running through the middle of the block */
@@ -129,14 +148,17 @@ h2 {
   top: 16%;
   left: 25%;
   width: 50%;
-  height: 2px; /* Thickness of the line */
-  background-color: black; /* Color of the line */
-  z-index: 1; /* Ensure the line is behind the content */
+  height: 2px;
+  /* Thickness of the line */
+  background-color: black;
+  /* Color of the line */
+  z-index: 1;
+  /* Ensure the line is behind the content */
 }
 
 .thumbnail {
-  margin-top:5%;
-  position:absolute;
+  margin-top: 5%;
+  position: absolute;
   margin-left: 8%;
 }
 
@@ -149,7 +171,7 @@ h2 {
 /* Six columns side by side */
 .column {
   float: left;
-  margin-left:15px;
+  margin-left: 15px;
   width: 17%;
 }
 
@@ -160,14 +182,15 @@ h2 {
   border: 1.5px solid black;
 }
 
-.active{
+.active {
   opacity: 1;
   transition: transform 0.3s ease;
   transform: scale(1.01);
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* Optional: add a shadow for a more pronounced effect */
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  /* Optional: add a shadow for a more pronounced effect */
 }
 
-.demo.active:hover{
+.demo.active:hover {
   opacity: 1;
 }
 
@@ -189,10 +212,12 @@ h2 {
 
 /* Footer styling */
 footer {
-  border-top: 2px solid black; /* Example border */
+  border-top: 2px solid black;
+  /* Example border */
   width: 100%;
   position: absolute;
   text-align: center;
   background-color: #F3CFC6;
-  margin-top: 933px; /* Push footer to the bottom */
+  margin-top: 933px;
+  /* Push footer to the bottom */
 }
