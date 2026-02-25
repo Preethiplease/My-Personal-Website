@@ -5,7 +5,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Hide horizontal overflow */
+  overflow-x: hidden;
+  /* Hide horizontal overflow */
 
 }
 
@@ -14,7 +15,8 @@ body {
   height: auto;
   flex: 1;
   min-width: 1375px;
-  padding-top: 100px; /* Adjust padding to match header height */
+  padding-top: 100px;
+  /* Adjust padding to match header height */
 }
 
 .Note {
@@ -22,9 +24,9 @@ body {
   display: inline-block;
   text-align: center;
   overflow: hidden;
-  width:10%;
-  margin-top:20px;
-  margin-left:45%;
+  width: 10%;
+  margin-top: 20px;
+  margin-left: 45%;
   transition: all 0.3s ease;
 }
 
@@ -44,17 +46,20 @@ body {
 }
 
 .Note:hover {
-  margin:0;
-  width:80%;
-  margin-left:10%;
-  background-color: rgba(244, 239, 236, 1); /* Change background opacity when expanded */
+  margin: 0;
+  width: 80%;
+  margin-left: 10%;
+  background-color: rgba(244, 239, 236, 1);
+  /* Change background opacity when expanded */
 }
+
 .Note:hover h3 {
   text-decoration: none;
 }
 
 .Note:hover p {
-  max-height: 1000px; /* Set a large enough value to ensure the entire text is visible */
+  max-height: 1000px;
+  /* Set a large enough value to ensure the entire text is visible */
   opacity: 1;
   margin-bottom: 10px;
   padding-top: 10px;
@@ -75,57 +80,77 @@ body {
   --n: 1;
   width: 100%;
   width: calc(var(--n) * 100%);
-  transform: translate(calc(var(--i, 0)/var(--n)*-100% ))
+  transform: translate(calc(var(--i, 0)/var(--n)*-100%))
 }
 
 /* .container::-webkit-scrollbar {
   display: none; /* Chrome, Safari, and Edge */
 /* } */
 
-.smooth { transition: transform calc(var(--f)*.5s) cubic-bezier(1, 1.59, .61, .74) }
+.smooth {
+  transition: transform calc(var(--f)*.5s) cubic-bezier(1, 1.59, .61, .74)
+}
 
 .swiper-slide {
-  max-width: 35%; /* Set each slide to take up 30% of the container's width */
+  max-width: 35%;
+  /* Set each slide to take up 30% of the container's width */
   padding: 5px;
-  margin-top:1%;
+  margin-top: 1%;
   margin-left: 1%;
   margin-right: 1%;
   width: calc(100% / var(--n));
   background-color: #f4efec;
-  display: flex; /* Ensure that flexbox is used */
-  flex-direction: column; /* Arrange content vertically */
-  align-items: center; /* Center content horizontally */
-  justify-content: center; /* Center content vertically */
-  text-align: center; /* Center text inside each slide */
-  }
+  display: flex;
+  /* Ensure that flexbox is used */
+  flex-direction: column;
+  /* Arrange content vertically */
+  align-items: center;
+  /* Center content horizontally */
+  justify-content: center;
+  /* Center content vertically */
+  text-align: center;
+  /* Center text inside each slide */
+}
 
 /* Line running through the middle of the block */
-.slider-1::before, .slider-2::before,  .slider-3::before,   .slider-4::before, .slider-5::before {
+.slider-1::before,
+.slider-2::before,
+.slider-3::before,
+.slider-4::before,
+.slider-5::before {
   content: '';
   position: absolute;
   margin-top: 7.5%;
   left: 5%;
   width: 90%;
-  height: 2px; /* Thickness of the line */
-  background-color: black; /* Color of the line */
-  z-index: 1; /* Ensure the line is behind the content */
+  height: 2px;
+  /* Thickness of the line */
+  background-color: black;
+  /* Color of the line */
+  z-index: 1;
+  /* Ensure the line is behind the content */
 }
-.swiper-slide:hover h2{
-  transform: scale(1.1); /* Scale it up a bit more for a noticeable pop */
+
+.swiper-slide:hover h2 {
+  transform: scale(1.1);
+  /* Scale it up a bit more for a noticeable pop */
   transition: transform 0.3s ease, z-index 0.3s ease;
 }
 
 .swiper-slide:hover {
   transition: transform 0.3s ease, z-index 0.3s ease;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Optional: add a shadow for a more pronounced effect */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  /* Optional: add a shadow for a more pronounced effect */
 }
 
-video:hover, iframe:hover{
-  transform: scale(1.01); /* Scale it up a bit more for a noticeable pop */
+video:hover,
+iframe:hover {
+  transform: scale(1.01);
+  /* Scale it up a bit more for a noticeable pop */
   transition: transform 0.3s ease;
 }
 
-span {
+.slider-1 span {
   font-size: 12px;
 }
 
@@ -133,7 +158,8 @@ span {
   text-decoration: underline;
 }
 
-.swiper-slide h3, h2 {
+.swiper-slide h3,
+h2 {
   align-content: center;
   padding: 20px;
 }
@@ -148,33 +174,45 @@ span {
   z-index: 2;
   display: inline-block;
   position: relative;
-  background-color: #f4efec;  /*Match the container background */
-  padding: 0 10px; /* Create space around the text */
+  background-color: #f4efec;
+  /*Match the container background */
+  padding: 0 10px;
+  /* Create space around the text */
 }
 
 iframe {
-  padding:10px;
+  padding: 10px;
   border: 2px solid black;
 }
+
 /* Width of the scrollbar */
 iframe::-webkit-scrollbar {
-  width: 6px; /* Adjust the width of the scrollbar */
+  width: 6px;
+  /* Adjust the width of the scrollbar */
 }
 
 .container::-webkit-scrollbar {
   height: 10px;
 }
+
 /* Track of the scrollbar */
-iframe::-webkit-scrollbar-track, .container::-webkit-scrollbar {
-  background:  #F3CFC6; /* Color of the track */
-  border:1px solid darkgrey;
-  border-radius: 10px; /* Round the corners of the scrollbar */
+iframe::-webkit-scrollbar-track,
+.container::-webkit-scrollbar {
+  background: #F3CFC6;
+  /* Color of the track */
+  border: 1px solid darkgrey;
+  border-radius: 10px;
+  /* Round the corners of the scrollbar */
 }
+
 /* Thumb (the draggable part of the scrollbar) */
-iframe::-webkit-scrollbar-thumb, .container::-webkit-scrollbar-thumb {
-  background-color: grey; /* Color of the thumb */
-  border-radius: 10px; /* Round the corners of the scrollbar */
-  border:1px solid darkgrey;
+iframe::-webkit-scrollbar-thumb,
+.container::-webkit-scrollbar-thumb {
+  background-color: grey;
+  /* Color of the thumb */
+  border-radius: 10px;
+  /* Round the corners of the scrollbar */
+  border: 1px solid darkgrey;
 }
 
 
@@ -188,10 +226,12 @@ iframe::-webkit-scrollbar-thumb, .container::-webkit-scrollbar-thumb {
 
 /* Footer styling */
 footer {
-  border-top: 2px solid black; /* Example border */
+  border-top: 2px solid black;
+  /* Example border */
   width: 100%;
   position: absolute;
   text-align: center;
   background-color: #F3CFC6;
-  margin-top: 200px; /* Push footer to the bottom */
+  margin-top: 200px;
+  /* Push footer to the bottom */
 }
